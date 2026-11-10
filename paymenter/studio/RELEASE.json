@@ -1,0 +1,8 @@
+{
+  "name": "X3-Studio-3D-v1.4.0",
+  "version": "1.4.0",
+  "base_theme": "1.1.0",
+  "paymenter": "1.5.9",
+  "payload_files": 36,
+  "standalone_theme": false
+}

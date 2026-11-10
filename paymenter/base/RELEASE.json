@@ -1,0 +1,10 @@
+{
+  "name": "X3 Hosting — Rackline",
+  "version": "1.1.0",
+  "paymenter": "1.5.9",
+  "php_min": "8.3",
+  "built_assets": true,
+  "blade_views": 98,
+  "payload_files": 119,
+  "core_modifications": false
+}

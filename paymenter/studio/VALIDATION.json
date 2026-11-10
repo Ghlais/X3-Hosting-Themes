@@ -1,0 +1,82 @@
+{
+  "date": "2026-11-09",
+  "release": "X3 Rackline Studio 3D 1.4.0",
+  "paymenter": "1.5.9",
+  "php": "8.3.35",
+  "base_theme": "X3 Rackline 1.1.0",
+  "payload": {
+    "verified_files": 36,
+    "layout_include_count": 1,
+    "compiled_views": 102,
+    "php_files": 10,
+    "errors": [],
+    "warnings": []
+  },
+  "native_tests": {
+    "tests": 32,
+    "assertions": 345,
+    "failures": 0,
+    "environment": "isolated SQLite test database"
+  },
+  "motion_tests": {
+    "tests": 8,
+    "passed": 8
+  },
+  "css_parser": {
+    "warnings": []
+  },
+  "installer": {
+    "runtime": "PHP 8.3.35 on Windows",
+    "passed": 14,
+    "cases": [
+      "preflight performs no payload changes",
+      "36-file install with additive custom layout injection preserves customized footer, base theme, branding assets, manifest, core and env",
+      "repeat apply detects an already-installed update without new backups",
+      "rollback preflight makes no changes",
+      "rollback restores customized old views, removes new payload files and preserves replaced version",
+      "repeated rollback is rejected",
+      "failed view clear restores every previous file automatically",
+      "unsupported Paymenter version rejected before mutation",
+      "corrupted package rejected before mutation",
+      "nested active-theme extraction rejected",
+      "damaged backup rejected before rollback changes",
+      "custom layout without a unique head is rejected without mutation",
+      "duplicate depth include rejected before mutation",
+      "upgrade from exact Depth 1.3.0 payload preserves single include; rollback restores all prior hashes"
+    ]
+  },
+  "core_integrity": {
+    "files_unchanged": 521,
+    "compared_with": "official v1.5.9 app/routes/config source"
+  },
+  "browser": {
+    "languages": [
+      "ar RTL",
+      "en LTR"
+    ],
+    "appearance": [
+      "dark",
+      "light"
+    ],
+    "observed_css_viewports": [
+      320,
+      390,
+      1242
+    ],
+    "observed_horizontal_overflow": false,
+    "checks": [
+      "home geometry preserve-3d",
+      "motion opt-out persisted after reload",
+      "native annual checkout at $100 to cart",
+      "synthetic login and three dashboard metrics",
+      "native invoice amount and status",
+      "ticket list on light-mode phone"
+    ],
+    "console_errors_observed": []
+  },
+  "limits": [
+    "Local reference installation only; no live VPS deployment",
+    "No real payment, provisioning or Pterodactyl changes",
+    "Custom live extensions require post-upload checks"
+  ]
+}

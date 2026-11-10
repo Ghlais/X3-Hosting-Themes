@@ -1,0 +1,6 @@
+* text=auto
+
+# The existing installers compare the original release bytes against SHA-256.
+/paymenter/base/** -text
+/paymenter/studio/** -text
+/pterodactyl/glass/** -text

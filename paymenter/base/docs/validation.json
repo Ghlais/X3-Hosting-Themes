@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-25",
+  "theme": "1.1.0",
+  "target": "Paymenter v1.5.9",
+  "php_8_3_35": {
+    "tests": "24",
+    "assertions": "269",
+    "errors": "0",
+    "failures": "0"
+  },
+  "php_8_4_13": {
+    "tests": 24,
+    "assertions": 269,
+    "errors": 0,
+    "failures": 0
+  },
+  "javascript": {
+    "tests": 3,
+    "passed": 3
+  },
+  "installer": {
+    "passed": 9,
+    "cases": [
+      "preflight makes no theme changes",
+      "upgrade installs exact hashes without nested payload; core and .env preserved",
+      "rollback restores exact previous directories and preserves replaced version",
+      "repeated rollback rejected safely",
+      "failed cache clear automatically restores both previous directories",
+      "unsupported version rejected before mutation",
+      "corrupt package rejected before mutation",
+      "first install and rollback preserve a previously absent X3 theme",
+      "installer extracted inside target theme is rejected before mutation"
+    ]
+  },
+  "core_integrity": {
+    "checked": 521,
+    "modified": [],
+    "missing": []
+  },
+  "build": {
+    "vite": "8.2.1",
+    "result": "passed"
+  },
+  "browser": {
+    "local_only": true,
+    "rtl_ltr_switch": "passed",
+    "comparison_open_close": "passed",
+    "responsive_preview_widths": [
+      390,
+      1440
+    ],
+    "actual_page_overflow_check": {
+      "document_width": 916,
+      "scroll_width": 916
+    },
+    "real_gateway_or_provisioning": false
+  }
+}

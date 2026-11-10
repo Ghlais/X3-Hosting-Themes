@@ -1,0 +1,33 @@
+{
+  "themes/x3-hosting/css/app.css": {
+    "file": "assets/app-z5SliYOu.css",
+    "name": "app",
+    "names": [
+      "app.css"
+    ],
+    "src": "themes/x3-hosting/css/app.css",
+    "isEntry": true,
+    "assets": [
+      "assets/NotoSansArabic-BtkkNFXq.ttf"
+    ]
+  },
+  "themes/x3-hosting/fonts/NotoSansArabic.ttf": {
+    "file": "assets/NotoSansArabic-BtkkNFXq.ttf",
+    "src": "themes/x3-hosting/fonts/NotoSansArabic.ttf"
+  },
+  "themes/x3-hosting/js/app.js": {
+    "file": "assets/app-CVQ3IIcD.js",
+    "name": "app",
+    "src": "themes/x3-hosting/js/app.js",
+    "isEntry": true
+  },
+  "themes/x3-hosting/js/easymde-entry.js": {
+    "file": "assets/easymde-entry-ClhZj_UZ.js",
+    "name": "easymde-entry",
+    "src": "themes/x3-hosting/js/easymde-entry.js",
+    "isEntry": true,
+    "css": [
+      "assets/easymde-entry-u1uPtOLD.css"
+    ]
+  }
+}
