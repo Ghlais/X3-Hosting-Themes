@@ -1,63 +1,47 @@
-# X3 Hosting Themes
+# تثبيت ثيمات X3 Hosting
 
-مستودع ثيمات **X3 Hosting** مع القوالب، الأصول المبنية، المثبّتات، المعاينات، وتراخيص المصادر المرفقة بكل حزمة.
+فك ضغط ملفات الثيمين خارج مجلدات التطبيقات. اتصل بالسيرفر عبر SSH وافتح الطرفية داخل المجلد المستخرج الذي يحتوي `paymenter/` و`pterodactyl/`. شغّل البلوك الخاص بالتطبيق الذي تريد تركيب الثيم عليه.
 
-| الثيم | الإصدار | التطبيق المستهدف | دليل التشغيل |
-| --- | --- | --- | --- |
-| Paymenter X3 Rackline Studio 3D | 1.4.0 فوق قاعدة Rackline 1.1.0 | Paymenter 1.5.9 مع PHP 8.3+ | [تركيب وفحص وتراجع](paymenter/README.md) |
-| Pterodactyl X3 Rackline Glass | 1.1.1 | Pterodactyl Panel 1.15.1 و1.15.2 | [تركيب وفحص وتراجع](pterodactyl/README.md) |
+## Paymenter · X3 Rackline Studio 3D v1.4.0
 
-```text
-X3-Hosting-Themes/
-├── paymenter/
-│   ├── base/       # ثيم x3-hosting الكامل وملفات Vite المبنية
-│   └── studio/     # تحديث Studio 3D التراكمي
-└── pterodactyl/
-    └── glass/      # ثيم Glass مع إصلاح الهيدر والبحث
-```
+يتطلب **Paymenter 1.5.9** و**PHP 8.3 أو أحدث**. تفترض الأوامر أن Paymenter مركّب في `/var/www/paymenter`.
 
-## رفع المصدر على GitHub
+### أول تركيب
 
-1. فك ضغط `X3-Hosting-Themes-GitHub.zip` على الكمبيوتر وافتح طرفية داخل مجلد `X3-Hosting-Themes` الذي يحتوي هذا الملف.
-2. أنشئ مستودعاً فارغاً باسم `X3-Hosting-Themes` من [GitHub](https://github.com/new). اختَر **Private** للأرشفة الشخصية، واترك خيارات إنشاء README و`.gitignore` والترخيص في نموذج GitHub فارغة حتى يكون أول commit من هذه الحزمة.
-3. شغّل الأوامر التالية، واستبدل `YOUR_GITHUB_USERNAME` باسم حسابك.
+هذا البلوك يركّب قاعدة Rackline ‏1.1.0، ثم تحديث Studio ‏1.4.0. نفّذه من جذر المجلد المستخرج.
 
 ```bash
-git init -b main
-git add .
-git status --short
-git commit -m "Archive X3 Hosting themes"
-git remote add origin https://github.com/YOUR_GITHUB_USERNAME/X3-Hosting-Themes.git
-git push -u origin main
+php paymenter/base/install.php --root=/var/www/paymenter &&
+php paymenter/base/install.php --root=/var/www/paymenter --apply &&
+php paymenter/studio/install.php --root=/var/www/paymenter &&
+php paymenter/studio/install.php --root=/var/www/paymenter --apply
 ```
 
-إذا طلب Git الاسم والبريد، اضبطهما داخل هذا المستودع ثم أعد `git commit`:
+### تحديث ثيم X3 موجود
+
+إذا عندك `x3-hosting` بقاعدة Rackline ‏1.1.0 أو إصدار Studio سابق، شغّل مثبّت `studio` مباشرة من جذر المجلد المستخرج.
 
 ```bash
-git config user.name "YOUR_NAME"
-git config user.email "YOUR_GITHUB_EMAIL"
+php paymenter/studio/install.php --root=/var/www/paymenter &&
+php paymenter/studio/install.php --root=/var/www/paymenter --apply
 ```
 
-تستخدم الحزمة `.gitattributes` لحفظ البايتات الأصلية التي يراجعها المثبّت عبر SHA-256. عند تعديل ملفات الثيم لاحقاً، راجع بصمات الحزمة الخاصة به قبل محاولة تركيب النسخة المعدّلة.
+### التفعيل والفحص
 
-## استنساخ المستودع
-
-على جهاز لديه صلاحية قراءة المستودع، استبدل اسم الحساب ثم شغّل:
+اختَر **`x3-hosting`** من إعدادات المظهر في إدارة Paymenter واحفظ. بعدها نفّذ الفحص من جذر المجلد المستخرج وتأكد أن `active_theme` يساوي `x3-hosting` وأن `errors` فارغة.
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/X3-Hosting-Themes.git
-cd X3-Hosting-Themes
+php paymenter/studio/check.php --root=/var/www/paymenter
 ```
 
-ابدأ من دليل Paymenter أو Pterodactyl في الجدول حسب الثيم الذي تريد تركيبه.
+## Pterodactyl · X3 Rackline Glass v1.1.1
 
-## ملفات التثبيت في Releases
+يتطلب **Pterodactyl Panel 1.15.1 أو 1.15.2**. تفترض الأوامر أن اللوحة مركّبة في `/var/www/pterodactyl`. استخدم البلوك نفسه للتركيب الأول والتحديث.
 
-من المستودع افتح **Releases → Draft a new release**، واستخدم مثلاً الوسم `themes-2026-11-10`. ارفع الملفين الجاهزين المرفقين مع حزمة المصدر:
+```bash
+php pterodactyl/glass/install.php --root=/var/www/pterodactyl &&
+php pterodactyl/glass/install.php --root=/var/www/pterodactyl --apply &&
+php pterodactyl/glass/install.php --root=/var/www/pterodactyl --check
+```
 
-- `X3-Paymenter-Complete-v1.4.0.zip`
-- `X3-Rackline-Glass-v1.1.1.zip`
-
-تحتوي ملفات التثبيت على ثيمات X3 فقط. جهّز تثبيتاً عاملاً من التطبيق المستهدف قبل استخدامها. تفاصيل رفع المصدر ونشر المرفقات في [دليل GitHub لرفع الكود](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github) و[دليل GitHub للإصدارات](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
-
-المصدر محفوظ مع تراخيص Paymenter وPterodactyl وخط Noto Sans Arabic في الحزم المعنية. الصور المرفقة معاينات ببيانات تجريبية.
+بعد نجاح الفحص، حدّث صفحة اللوحة وجرّب البحث والكونسول. يظهر أمر `Rollback:` ضمن ناتج المثبّت إذا احتجت التراجع.
