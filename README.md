@@ -1,47 +1,22 @@
-# تثبيت ثيمات X3 Hosting
+# X3 Hosting · الثيمات والإضافات
 
-فك ضغط ملفات الثيمين خارج مجلدات التطبيقات. اتصل بالسيرفر عبر SSH وافتح الطرفية داخل المجلد المستخرج الذي يحتوي `paymenter/` و`pterodactyl/`. شغّل البلوك الخاص بالتطبيق الذي تريد تركيب الثيم عليه.
+ثيمات **Paymenter** و**Pterodactyl**، وإضافات Blueprint للألعاب والتطبيقات، وأدوات إدارة النود. كل دليل يحتوي أوامر التركيب والفحص والتراجع.
 
-## Paymenter · X3 Rackline Studio 3D v1.4.0
+| المشروع | الإصدار | الدليل والمعاينة |
+| --- | --- | --- |
+| Paymenter Rackline Studio 3D | Studio 1.4.0 + Base 1.1.0 | [التركيب والتفعيل](paymenter/README.md) · [المتجر](paymenter/studio/previews/X3-Studio-3D-home-ar.jpg) · [لوحة العميل](paymenter/studio/previews/X3-Studio-3D-dashboard-ar.jpg) |
+| Discord Widget لـPaymenter | إضافة اختيارية | [التركيب والاستخدام](paymenter/discord-widget/README.md) |
+| Pterodactyl Rackline Glass | 1.1.1 | [التركيب والتراجع](pterodactyl/README.md) · [الكونسول](docs/previews/rackline-console.png) · [البحث](pterodactyl/glass/previews/search.png) |
+| X3 Game Tools | 1.1.1 | [التركيب والاستخدام](pterodactyl/extensions/game-tools/README.md) · [إدارة اللاعبين](docs/previews/players-demo.jpg) |
+| X3 Paper Plugins | 1.0.2 | [التركيب والاستخدام](pterodactyl/extensions/paper-plugins/README.md) · [معاينة البحث](docs/previews/paper-plugin-search.jpg) |
+| X3 Network Monitor | أداة إدارة اختيارية | [التركيب والتشغيل](operations/network-monitor/README.md) · [معاينة ببيانات تجريبية](docs/previews/network-monitor-demo.jpg) |
+| X3 Firewall | أداة إدارة اختيارية | [التركيب والفحص](operations/firewall/README.md) |
 
-يتطلب **Paymenter 1.5.9** و**PHP 8.3 أو أحدث**. تفترض الأوامر أن Paymenter مركّب في `/var/www/paymenter`.
-
-### أول تركيب
-
-هذا البلوك يركّب قاعدة Rackline ‏1.1.0، ثم تحديث Studio ‏1.4.0. نفّذه من جذر المجلد المستخرج.
-
-```bash
-php paymenter/base/install.php --root=/var/www/paymenter &&
-php paymenter/base/install.php --root=/var/www/paymenter --apply &&
-php paymenter/studio/install.php --root=/var/www/paymenter &&
-php paymenter/studio/install.php --root=/var/www/paymenter --apply
-```
-
-### تحديث ثيم X3 موجود
-
-إذا عندك `x3-hosting` بقاعدة Rackline ‏1.1.0 أو إصدار Studio سابق، شغّل مثبّت `studio` مباشرة من جذر المجلد المستخرج.
+[معرض الصور](docs/PREVIEWS.md) · [الحقوق والتراخيص](NOTICE.md) · [سجل التحديثات](CHANGELOG.md)
 
 ```bash
-php paymenter/studio/install.php --root=/var/www/paymenter &&
-php paymenter/studio/install.php --root=/var/www/paymenter --apply
+git clone https://github.com/Ghlais/X3-Hosting-Themes.git
+cd X3-Hosting-Themes
 ```
 
-### التفعيل والفحص
-
-اختَر **`x3-hosting`** من إعدادات المظهر في إدارة Paymenter واحفظ. بعدها نفّذ الفحص من جذر المجلد المستخرج وتأكد أن `active_theme` يساوي `x3-hosting` وأن `errors` فارغة.
-
-```bash
-php paymenter/studio/check.php --root=/var/www/paymenter
-```
-
-## Pterodactyl · X3 Rackline Glass v1.1.1
-
-يتطلب **Pterodactyl Panel 1.15.1 أو 1.15.2**. تفترض الأوامر أن اللوحة مركّبة في `/var/www/pterodactyl`. استخدم البلوك نفسه للتركيب الأول والتحديث.
-
-```bash
-php pterodactyl/glass/install.php --root=/var/www/pterodactyl &&
-php pterodactyl/glass/install.php --root=/var/www/pterodactyl --apply &&
-php pterodactyl/glass/install.php --root=/var/www/pterodactyl --check
-```
-
-بعد نجاح الفحص، حدّث صفحة اللوحة وجرّب البحث والكونسول. يظهر أمر `Rollback:` ضمن ناتج المثبّت إذا احتجت التراجع.
+نفّذ دليل المنتج الذي تريد تركيبه. تستهدف الأدلة المسارات `/var/www/paymenter` و`/var/www/pterodactyl` ويمكن تعديلها حسب تثبيتك.

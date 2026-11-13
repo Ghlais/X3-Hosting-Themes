@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>X3 Network Monitor</title>
+  <link rel="stylesheet" href="/app.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="brand"><span class="mark">X3</span><span dir="ltr">X3 HOSTING</span></div>
+    <p class="status" id="connection" role="status">جاري الاتصال</p>
+  </header>
+  <main>
+    <section class="intro">
+      <div>
+        <p class="eyebrow" id="node" dir="auto">X3 Hosting</p>
+        <h1>مراقبة شبكة الألعاب</h1>
+        <p>ترافيك النود، إسقاطات الشبكة، وحالة موارد النظام.</p>
+      </div>
+      <div class="node-meta">
+        <span>واجهة الشبكة</span><strong id="interface" dir="ltr">—</strong>
+        <span>آخر قياس</span><strong id="updated" dir="ltr">—</strong>
+      </div>
+    </section>
+    <div class="demo" id="demo" hidden>معاينة ببيانات تجريبية</div>
+
+    <section class="metrics" aria-label="المؤشرات الحالية">
+      <article><p>استقبال</p><strong id="rx_mbps">—</strong><small dir="ltr">Mbps</small></article>
+      <article><p>إرسال</p><strong id="tx_mbps">—</strong><small dir="ltr">Mbps</small></article>
+      <article><p>الحزم الواردة</p><strong id="rx_pps">—</strong><small dir="ltr">packets/s</small></article>
+      <article><p>إسقاطات الاستقبال</p><strong id="rx_drop_ps">—</strong><small dir="ltr">packets/s</small></article>
+    </section>
+
+    <section class="grid">
+      <div class="panel graph">
+        <div class="panel-head">
+          <div><h2>حركة الشبكة</h2><p>القيمة القصوى لكل فترة عرض</p></div>
+          <label>الفترة
+            <select id="window">
+              <option value="15">15 دقيقة</option>
+              <option value="60" selected>ساعة</option>
+              <option value="360">6 ساعات</option>
+              <option value="1440">24 ساعة</option>
+            </select>
+          </label>
+        </div>
+        <canvas id="traffic" role="img" aria-label="منحنى الترافيك الوارد والصادر بوحدة ميغابت في الثانية"></canvas>
+        <p id="chart-empty" hidden>بانتظار قياسات الشبكة</p>
+        <div class="legend"><span>الوارد</span><span>الصادر</span><small dir="ltr">Mbps</small></div>
+      </div>
+      <div class="panel health">
+        <h2>حالة النود</h2>
+        <dl>
+          <div><dt>المعالج</dt><dd id="cpu_pct">—</dd></div>
+          <div><dt>الذاكرة</dt><dd id="memory_pct">—</dd></div>
+          <div><dt>جدول تتبع الاتصالات</dt><dd id="conntrack_pct">—</dd></div>
+          <div><dt>أخطاء استقبال الواجهة / ث</dt><dd id="rx_error_ps">—</dd></div>
+          <div><dt>إسقاطات انتظار TCP / ث</dt><dd id="tcp_drop_ps">—</dd></div>
+          <div><dt>أخطاء مخزن UDP IPv4 / ث</dt><dd id="udp_buffer_ps">—</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="panel alerts" aria-labelledby="alert-heading">
+      <h2 id="alert-heading">تنبيهات الحدود</h2>
+      <p>ارتفاع العدّاد مؤشر يحتاج مراجعة مع حالة الألعاب ومخطط الترافيك عند المزوّد.</p>
+      <ul id="alerts" aria-live="polite"><li>بانتظار أول قياس</li></ul>
+    </section>
+  </main>
+  <footer><span dir="ltr">X3 NETWORK MONITOR</span><span>لوحة خاصة للقراءة</span></footer>
+</body>
+</html>

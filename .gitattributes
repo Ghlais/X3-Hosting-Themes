@@ -4,3 +4,10 @@
 /paymenter/base/** -text
 /paymenter/studio/** -text
 /pterodactyl/glass/** -text
+
+/operations/** text eol=lf
+/pterodactyl/extensions/** text eol=lf
+*.blueprint binary
+*.jar binary
+*.jpg binary
+*.png binary

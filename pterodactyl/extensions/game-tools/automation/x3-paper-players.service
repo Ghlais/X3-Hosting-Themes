@@ -1,0 +1,19 @@
+[Unit]
+Description=Verify and stage X3 Players for Paper Minecraft servers
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/pterodactyl
+RuntimeDirectory=x3-paper-players
+RuntimeDirectoryMode=0750
+ExecStart=/usr/bin/flock --nonblock /run/x3-paper-players/sync.lock /usr/bin/php /opt/x3-paper-players/sync-paper.php --apply
+TimeoutStartSec=110
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+UMask=0027

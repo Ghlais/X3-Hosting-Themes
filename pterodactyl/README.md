@@ -38,3 +38,9 @@ php install.php --root=/var/www/pterodactyl --rollback="$x3_backup" --apply
 ```
 
 استبدل `BACKUP_ID` بالاسم المطبوع. عند التشغيل من جذر المستودع استخدم `pterodactyl/glass/install.php` مكان `install.php`.
+
+## إضافات Blueprint
+
+- [Game Tools لفحص التطبيقات وإدارة لاعبي Paper](extensions/game-tools/README.md)
+- [Paper Plugins للبحث وتثبيت البلوقنات](extensions/paper-plugins/README.md)
+- [معاينات الثيم والإضافات](../docs/PREVIEWS.md)

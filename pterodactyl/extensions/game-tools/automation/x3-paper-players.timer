@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodically provision the X3 Players bridge on eligible Paper servers
+
+[Timer]
+OnBootSec=90s
+OnUnitInactiveSec=2min
+AccuracySec=10s
+Unit=x3-paper-players.service
+
+[Install]
+WantedBy=timers.target

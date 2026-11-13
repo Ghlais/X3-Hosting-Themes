@@ -1,0 +1,9 @@
+name: X3Players
+version: 1.0.0
+main: xyz.x3hosting.players.X3Players
+api-version: '1.20'
+author: X3 Hosting
+description: Console-only player actions and a local Paper state snapshot
+commands:
+  x3players:
+    description: Panel bridge for scoped player actions

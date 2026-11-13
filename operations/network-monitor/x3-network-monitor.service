@@ -1,0 +1,25 @@
+[Unit]
+Description=X3 Network Monitor
+After=network.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=x3-network-monitor
+WorkingDirectory=/opt/x3-network-monitor
+LoadCredential=dashboard-password:/etc/x3-network-monitor/dashboard-password
+ExecStart=/usr/bin/python3 /opt/x3-network-monitor/monitor.py --config /etc/x3-network-monitor/config.json --state /var/lib/x3-network-monitor --password-file %d/dashboard-password
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX AF_INET
+
+[Install]
+WantedBy=multi-user.target

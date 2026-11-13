@@ -1,0 +1,18 @@
+info:
+  name: "X3 Paper Plugins"
+  identifier: "xthreepaper"
+  description: "Find and install compatible Paper plugins from Modrinth."
+  version: "1.0.2"
+  target: "beta-2026-08"
+  author: "X3 Hosting"
+  website: "https://x3-hosting.xyz/"
+  icon: "mark.svg"
+admin:
+  view: "admin.blade.php"
+dashboard:
+  components: "dashboard"
+  css: "dashboard/paper.css"
+requests:
+  app: "app"
+  routers:
+    client: "routes/client.php"

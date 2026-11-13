@@ -1,0 +1,13 @@
+{
+  "node": "X3 Hosting · Demo node",
+  "interface": "eth0",
+  "interval_seconds": 5,
+  "thresholds": {
+    "rx_drop_ps": 25,
+    "rx_error_ps": 10,
+    "tcp_drop_ps": 10,
+    "udp_buffer_ps": 10,
+    "conntrack_pct": 80,
+    "cpu_pct": 95
+  }
+}

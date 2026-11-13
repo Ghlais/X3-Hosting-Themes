@@ -1,0 +1,13 @@
+[Unit]
+Description=X3 firewall for public host and Pterodactyl traffic
+After=ufw.service docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/x3-firewall apply
+ExecReload=/usr/local/sbin/x3-firewall apply
+ExecStop=/usr/local/sbin/x3-firewall remove
+
+[Install]
+WantedBy=multi-user.target

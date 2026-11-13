@@ -1,0 +1,20 @@
+info:
+  name: "X3 Game Tools"
+  identifier: "xthreegames"
+  description: "Game settings, Paper player moderation, and application startup checks."
+  version: "1.1.1"
+  target: "beta-2026-08"
+  author: "X3 Hosting"
+  website: "https://x3-hosting.xyz/"
+  icon: "mark.svg"
+admin:
+  view: "admin.blade.php"
+dashboard:
+  components: "dashboard"
+  css: "dashboard/games.css"
+requests:
+  app: "app"
+  routers:
+    client: "routes/client.php"
+database:
+  migrations: "migrations"

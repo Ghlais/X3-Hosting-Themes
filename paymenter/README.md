@@ -63,3 +63,8 @@ php studio/install.php --root=/var/www/paymenter --rollback="$x3_backup" --apply
 ```
 
 إذا كان هذا أول تركيب وتريد إلغاءه بالكامل، اختر الثيم السابق من إدارة Paymenter، ثم تراجع عن Studio أولاً، وبعده عن القاعدة بأمر `Rollback:` الخاص بمثبّت `base`. مسار نسخة القاعدة تحت `/var/www/paymenter/storage/app/x3-theme-backups/`.
+
+## إضافات ومعاينات
+
+- [تركيب ويدجت Discord](discord-widget/README.md)
+- [معاينة الشراء والفواتير والتذاكر](../docs/PREVIEWS.md#paymenter)

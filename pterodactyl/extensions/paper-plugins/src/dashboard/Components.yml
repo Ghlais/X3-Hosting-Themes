@@ -1,0 +1,8 @@
+Navigation:
+  Routes:
+    - Name: "Paper Plugins"
+      Path: "/x3-paper-plugins"
+      Type: "server"
+      Component: "PaperPlugins"
+      Permission: "'file.read'"
+      AdminOnly: "false"

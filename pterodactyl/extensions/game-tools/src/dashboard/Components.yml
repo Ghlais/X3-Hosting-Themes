@@ -1,0 +1,8 @@
+Navigation:
+  Routes:
+    - Name: "Game Tools"
+      Path: "/x3-game-tools"
+      Type: "server"
+      Component: "GameTools"
+      Permission: "null"
+      AdminOnly: "false"

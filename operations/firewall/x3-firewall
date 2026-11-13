@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+nft=/usr/sbin/nft
+rules=/etc/x3-firewall/x3-guard.nft
+exec 9>/run/lock/x3-firewall.lock
+flock 9
+
+case "${1:-}" in
+    check|apply)
+        transaction=$(mktemp /run/x3-firewall.XXXXXX)
+        trap 'rm -f -- "$transaction"' EXIT
+        if "$nft" list table inet x3_guard >/dev/null 2>&1; then
+            printf 'delete table inet x3_guard\n' > "$transaction"
+        fi
+        cat "$rules" >> "$transaction"
+        "$nft" -c -f "$transaction"
+        if [[ "$1" == apply ]]; then
+            "$nft" -f "$transaction"
+        fi
+        ;;
+    remove)
+        if "$nft" list table inet x3_guard >/dev/null 2>&1; then
+            "$nft" delete table inet x3_guard
+        fi
+        ;;
+    status)
+        "$nft" list counters table inet x3_guard
+        ;;
+    *)
+        printf 'Usage: x3-firewall {check|apply|remove|status}\n' >&2
+        exit 64
+        ;;
+esac

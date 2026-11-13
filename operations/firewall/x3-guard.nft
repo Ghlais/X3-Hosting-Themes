@@ -1,0 +1,47 @@
+table inet x3_guard {
+    set private_tcp_ports {
+        type inet_service
+        elements = { 2375, 2376, 3306, 6379, 8787, 11211, 11434 }
+    }
+
+    counter spoofed_loopback {}
+    counter private_host_tcp {}
+    counter invalid_host {}
+    counter private_published_tcp {}
+    counter invalid_game {}
+    counter invalid_game_tcp_start {}
+    counter direct_game {}
+    counter published_game_tcp {}
+    counter published_game_udp {}
+
+    chain inbound_source {
+        type filter hook prerouting priority raw; policy accept;
+        iifname "eth0" ip saddr 127.0.0.0/8 counter name spoofed_loopback drop
+        iifname "eth0" ip6 saddr ::1 counter name spoofed_loopback drop
+    }
+
+    chain host_input {
+        type filter hook input priority -10; policy accept;
+        iifname "eth0" jump public_host
+    }
+
+    chain public_host {
+        tcp dport 22 return
+        tcp dport @private_tcp_ports counter name private_host_tcp drop
+        meta l4proto { tcp, udp } ct state invalid counter name invalid_host drop
+    }
+
+    chain game_forward {
+        type filter hook forward priority -10; policy accept;
+        iifname "eth0" oifname "pterodactyl0" jump public_game
+    }
+
+    chain public_game {
+        meta l4proto tcp ct status dnat ct original proto-dst @private_tcp_ports counter name private_published_tcp drop
+        meta l4proto { tcp, udp } ct state invalid counter name invalid_game drop
+        ct state new ct status dnat tcp flags & (syn | ack | fin | rst) != syn counter name invalid_game_tcp_start drop
+        ct state new ct status dnat meta l4proto tcp counter name published_game_tcp return
+        ct state new ct status dnat meta l4proto udp counter name published_game_udp return
+        meta l4proto { tcp, udp } ct state new counter name direct_game drop
+    }
+}
